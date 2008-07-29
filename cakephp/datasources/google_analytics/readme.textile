@@ -1,0 +1,15 @@
+h1. CakePHP Google Analytics Source
+
+A CakePHP datasource for aggregating google analytics data via web scraping.
+
+h2. Usage / Docs
+
+See the "blog post":http://debuggable.com/posts/new-google-analytics-api:480f4dd6-c59c-445f-8ce0-4202cbdd56cb.
+
+h2. Missing Features
+
+* Access paginated content for 500++ results
+
+h2. Known Bugs
+
+None
