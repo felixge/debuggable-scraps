@@ -11,12 +11,12 @@ If you're already signed up to github and know how to fork a project - go ahead 
 If you're new to this whole git game:
 
 * Sign up for a "free github account":https://github.com/signup/free
-* Visit the "debuggable scraps repository page":http://github.com/felixge/debuggable-scraps/tree/master
-* Hit the fork button
+* Visit the "debuggable scraps repository":http://github.com/felixge/debuggable-scraps/tree/master
+* Hit the 'fork' button
 * "Learn how to use git":http://www.spheredev.org/wiki/Git_for_the_lazy
 * Checkout your fork's repository and hack away
 * Push your changes to github
-* Go back to the "debuggable scraps repository page":http://github.com/felixge/debuggable-scraps/tree/master and hit the "pull request" button
+* Go back to the "debuggable scraps repository":http://github.com/felixge/debuggable-scraps/tree/master and hit the "pull request" button (read more about this "here":http://github.com/guides/pull-requests)
 * Watch your changes being reviewed and merged into this repository : )
 
 h2. Questions?
