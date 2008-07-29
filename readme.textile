@@ -1,0 +1,26 @@
+h1. Debuggable Scraps
+
+A collection of MIT licensed code snippets created by "Debuggable Limited":http://www.debuggable.com/.
+
+Feel free to use any of the code published here in your personal or commercial projects!
+
+h2. I found a bug / want an improvement
+
+If you're already signed up to github and know how to fork a project - go ahead and join the fun!
+
+If you're new to this whole git game:
+
+* Sign up for a "free github account":https://github.com/signup/free
+* Visit the "debuggable scraps repository page":http://github.com/felixge/debuggable-scraps/tree/master
+* Hit the fork button
+* "Learn how to use git":http://www.spheredev.org/wiki/Git_for_the_lazy
+* Checkout your fork's repository and hack away
+* Push your changes to github
+* Go back to the "debuggable scraps repository page":http://github.com/felixge/debuggable-scraps/tree/master and hit the "pull request" button
+* Watch your changes being reviewed and merged into this repository : )
+
+h2. Questions?
+
+Feel free to email us at "scraps [at] debuggable [dot] com".
+
+Also check if there is a "blog post":http://www.debuggable.com for the snippet you are looking at and leave a comment there.
