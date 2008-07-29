@@ -1,0 +1,7 @@
+h2. Features
+
+ * Handle elements containing html
+
+h2. Bugs
+
+Currently none
