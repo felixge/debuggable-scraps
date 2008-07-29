@@ -12,11 +12,11 @@ Use custom link texts
 
 <pre><code>$('table td').expandable({more: 'Show more ..', less: 'Show less'});</code></pre>
 
-Set the cut-off length for the text to 42 characters
+Set the cut-off length for the text to 42 characters (+ n characters until next whitespace is found)
 
 <pre><code>$('table td').expandable({length: 42});</code></pre>
 
-Set the cut-off length for the text to 42 characters or less
+Set the cut-off length for the text to 42 characters (-n characters until previous whitespace is found)
 
 <pre><code>$('table td').expandable({length: 42, greedy: false});</code></pre>
 
