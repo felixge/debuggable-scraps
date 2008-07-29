@@ -1,0 +1,29 @@
+h1. jQuery Expandable Plugin
+
+This plugin allows to add a expand / collapse link to elements with lots of text inside of them.
+
+h2. Usage / Docs
+
+Allow long table columns to expand / collapse
+
+<pre><code>$('table td').expandable();</code></pre>
+
+Use custom link texts
+
+<pre><code>$('table td').expandable({more: 'Show more ..', less: 'Show less'});</code></pre>
+
+Set the cut-off length for the text to 42 characters
+
+<pre><code>$('table td').expandable({length: 42});</code></pre>
+
+Set the cut-off length for the text to 42 characters or less
+
+<pre><code>$('table td').expandable({length: 42, greedy: false});</code></pre>
+
+h2. Missing Features
+
+* Handle elements containing html
+
+h2. Known Bugs
+
+None
