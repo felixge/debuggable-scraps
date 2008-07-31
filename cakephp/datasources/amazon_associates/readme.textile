@@ -1,0 +1,35 @@
+h1. CakePHP Amazon Associates Data Source
+
+A CakePHP datasource for interacting with the amazon associates API.
+
+h2. Usage / Docs
+
+Todo
+
+h2. Missing Features
+
+* Implement missing operations: 
+** BrowseNodeLookup
+** CartAdd
+** CartClear
+** CartCreate
+** CartGet
+** CartModify
+** CustomerContentLookup
+** CustomerContentSearch
+** Help
+** ItemLookup
+** ListLookup
+** ListSearch
+** SellerListingLookup
+** SellerListingSearch
+** SellerLookup
+** SimilarityLookup
+** TagLookup
+** TransactionLookup
+
+* Read associates tag from db config
+
+h2. Known Bugs
+
+None
