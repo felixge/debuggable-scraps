@@ -8,7 +8,7 @@ h2. Usage / Docs
 
 h3. Installing
 
-1. Copy amazon_associates_source.php to app/models/datasources/amazon_associates_source.php<br>
+1. Copy amazon_associates_source.php to app/models/datasources/<br>
 2. Open your app/config/database.php and add the following:
 
 <pre><code>
@@ -18,7 +18,7 @@ var $amazon = array(
 );
 </code></pre>
 
-3. Create app/controllers/amazon.php with the following code:
+3. Create app/controllers/amazon_controlle.php with the following code:
 
 <pre><code>
 class AmazonController extends AppController{
@@ -28,12 +28,14 @@ class AmazonController extends AppController{
 		App::import('ConnectionManager');
 		$amazon = ConnectionManager::getDataSource('amazon');
 		$response = $amazon->find('DVD', array('title' => 'The Devil and Daniel Johnston'));
+		debug($response);
+		exit;
 	}
 }
 </code></pre>
 
 4. Access the _/amazon_ action of your app and look at the resultset.<br>
-5. Take a look at the "available query options":http://docs.amazonwebservices.com/AWSECommerceService/2008-06-26/DG/index.html?USSearchIndexParamForItemsearch.html
+5. Take a look at the "available query options":http://docs.amazonwebservices.com/AWSECommerceService/2008-06-26/DG/index.html?USSearchIndexParamForItemsearch.html.
 
 h2. Missing Features
 
