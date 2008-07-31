@@ -25,7 +25,9 @@ class AmazonController extends AppController{
 	var $uses = array();
 
 	function index() {
+		// Only needed if no Model has been loaded so far
 		App::import('ConnectionManager');
+
 		$amazon = ConnectionManager::getDataSource('amazon');
 		$response = $amazon->find('DVD', array('title' => 'The Devil and Daniel Johnston'));
 		debug($response);
