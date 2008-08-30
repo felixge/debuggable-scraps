@@ -1,0 +1,28 @@
+h1. CakePHP Lookupable Behavior
+
+A CakePHP behavior to easily look up the id's of records or create them if they do not exist yet. Useful when working with lots of lookup / status tables.
+
+h3. Installing
+
+1. Copy lookupable.php to app/models/behaviors/<br>
+2. Open / create app/app_model.php and add the following:
+
+<pre><code>
+class AppModel extends Model{
+	var $actsAs = array('Lookupable');
+}
+</code></pre>
+
+h2. Usage / Docs
+
+To lookup the id of lets say your 'Admin' group, you can simply do:
+
+<pre><code>
+$group_id = $this->Group->lookup('Admin');
+</code></pre>
+
+If the group does not exist yet, the behavior will automatically create it and return the id of the newly created record.
+
+h2. Known Bugs
+
+None
