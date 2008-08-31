@@ -1,0 +1,46 @@
+h1. CakePHP Lookupable Behavior
+
+A CakePHP behavior to retrieve a set of records ready for display in a tag-cloud kind of view.
+
+h3. Installing
+
+1. Copy cloud.php to app/models/behaviors/<br>
+2. Find the model you intend to use this with and add a configuration similar to this to it:
+
+<pre><code>
+class AppModel extends Model{
+	var $actsAs = array('Cloud' => array(
+		'countField' => 'count',
+		'query' => array('limit' => 50, 'contain' => false, 'order' => array('Tag.count' => 'DESC')),
+	));
+}
+</code></pre>
+
+h2. Usage / Docs
+
+To display the records you are interested in as a cloud, all you need to do is query them inside your controller:
+<pre><code>
+$tags = $this->Tag->find('cloud');
+$this->set(compact('tags'));
+</code></pre>
+
+And render them in your view similar to this:
+<pre><code>
+<h3>Tag Cloud</h3>
+<?php
+$out = array();
+foreach ($tags as $tag) {
+	$size = 10 * $tag['Tag']['scale'];
+	$out[] = $html->link(
+		$tag['Tag']['name'],
+		array('controller' => 'tags', 'action' => 'view', $tag['Tag']['id']), 
+		array('style' => 'font-size: '.$size.'px;')
+	);
+}
+echo join(', ', $out);
+?>
+</code></pre>
+
+h2. Known Bugs
+
+None
