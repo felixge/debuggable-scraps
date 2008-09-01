@@ -1,0 +1,55 @@
+h1. CakePHP Amazon Associates Data Source
+
+A CakePHP datasource for interacting with the Akismet spam protection API.
+
+If you don't have an Akismet API key you can get one here: Get "Akismet API key":http://akismet.com/personal/
+
+h2. Usage / Docs
+
+1. Copy akismet_source.php to app/models/datasources/<br>
+2. Open your app/config/database.php and add the following:
+
+<pre><code>
+var $akismet = array(
+	'datasource' => 'akismet',
+	'blog' => 'http://your-website-url.com',
+	'key' => 'your-api-key-here',
+	'map' => array(
+		'comment_author' => 'author_name',
+		'comment_author_email' => 'author_email',
+		'comment_author_url' => 'author_url',
+		'user_ip' => 'author_ip',
+		'user_agent' => 'author_agent',
+		'comment_type' => 'type',
+		'comment_content' => 'text',
+	)
+);
+</code></pre>
+
+The map key above tells the API what model fields of yours map to what fields the API expects to receive. If you use this API with multiple models you can dynamically pass different maps upon each request, or perform the normalization yourself before passing your data to the datasource.
+
+3. Add this validation logic to your Comment model:
+
+<pre><code>
+class Comment extends AppModel{
+	var $validate = array(
+		'text' => array(
+			array(
+				'rule' => array('notSpam'),
+				'message' => 'This comment appears to be spam. Please contact us if the problem persists.',
+				'required' => true,
+			),
+		),
+	);
+
+	function notSpam($fields) {
+		$akismet = ConnectionManager::getDataSource('akismet');
+		return !$akismet->isSpam($this->data['Comment'], Post::url($this->data['Comment']['post_id']));
+	}
+
+}
+</code></pre>
+
+h2. Known Bugs
+
+None
