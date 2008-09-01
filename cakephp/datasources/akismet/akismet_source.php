@@ -40,7 +40,7 @@ class AkismetSource extends DataSource{
 		return $this->submit('check', $comment, $config);
 	}
 
-	function submit($what, $comment, $confg = array()) {
+	function submit($what, $comment, $config = array()) {
 		$map = array(
 			'check' => 'comment-check',
 			'spam' => 'submit-spam',
