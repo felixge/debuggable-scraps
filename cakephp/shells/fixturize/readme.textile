@@ -12,7 +12,7 @@ h2. Usage / Docs
 To create a fixture for your posts table, run the following in your Terminal:
 <pre><code>
 cd cake/console
-./cake fixturize post'
+./cake fixturize post
 </code></pre>
 
 This will create a file called app/tests/fixtures/post_fixture.php for you holding all records of that table.
