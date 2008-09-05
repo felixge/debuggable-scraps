@@ -1,0 +1,26 @@
+h1. CakePHP Fixturize Shell
+
+A CakePHP shell to create a fixture using the values of any given database table so one does not have to type it up manually.
+
+h3. Installing
+
+1. Copy fixturize.php to vendors/shells (or app/vendors/shells)<br>
+2. That's it!
+
+h2. Usage / Docs
+
+To create a fixture for your posts table, run the following in your Terminal:
+<pre><code>
+cd cake/console
+./cake fixturize post'
+</code></pre>
+
+This will create a file called app/tests/fixtures/post_fixture.php for you holding all records of that table.
+
+If you want to fixturize more than one table at a time, simply provide more table names as space separated arguments.
+
+In case you previously fixturized a table already, use the --force option to overwrite the old one.
+
+h2. Known Bugs
+
+None
