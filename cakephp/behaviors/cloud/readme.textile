@@ -1,4 +1,4 @@
-h1. CakePHP Lookupable Behavior
+h1. CakePHP Cloud Behavior
 
 A CakePHP behavior to retrieve a set of records ready for display in a tag-cloud kind of view.
 
