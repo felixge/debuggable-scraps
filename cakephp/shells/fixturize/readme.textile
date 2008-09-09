@@ -21,6 +21,10 @@ If you want to fixturize more than one table at a time, simply provide more tabl
 
 In case you previously fixturized a table already, use the --force option to overwrite the old one.
 
+h2. Missing Features
+
+ * Fixturize the schema of tables
+
 h2. Known Bugs
 
 None
