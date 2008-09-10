@@ -17,7 +17,7 @@
 App::import(array('Model', 'AppModel', 'File'));
 class FixturizeShell extends Shell{
 	function main() {
-		if ($this->args[0] == '?') {
+		if ($this->args && $this->args[0] == '?') {
 			return $this->out('Usage: ./cake fixturize <table> [-force] [-reindex]');
 		}
 		$options = array(
