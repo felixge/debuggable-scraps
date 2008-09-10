@@ -26,6 +26,7 @@ class FixturizeShell extends Shell{
 		$options = array(
 			'force' => false,
 			'reindex' => false,
+			'all' => false,
 		);
 		foreach ($this->params as $key => $val) {
 			foreach ($options as $name => $option) {
@@ -33,6 +34,11 @@ class FixturizeShell extends Shell{
 					$options[$name] = true;
 				}
 			}
+		}
+
+		if ($options['all']) {
+			$db = ConnectionManager::getDataSource('default');
+			$this->args = $db->listSources();
 		}
 
 		foreach ($this->args as $table) {
