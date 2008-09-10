@@ -17,9 +17,6 @@
 App::import(array('Model', 'AppModel', 'File'));
 class FixturizeShell extends Shell{
 	function main() {
-		if (empty($this->args)) {
-			return $this->err('Usage: ./cake fixturize <table>');
-		}
 		if ($this->args[0] == '?') {
 			return $this->out('Usage: ./cake fixturize <table> [-force] [-reindex]');
 		}
@@ -39,6 +36,10 @@ class FixturizeShell extends Shell{
 		if ($options['all']) {
 			$db = ConnectionManager::getDataSource('default');
 			$this->args = $db->listSources();
+		}
+
+		if (empty($this->args)) {
+			return $this->err('Usage: ./cake fixturize <table>');
 		}
 
 		foreach ($this->args as $table) {
