@@ -4,7 +4,7 @@ A Jquery plugin that will allow you to tab-complete a set of strings found in yo
 
 h2. Usage / Docs
 
-Auto complete a comment textarea with names scraped from the markup of the page (all strong elements with class author-name).
+Auto complete a comment textarea with names scraped from the markup of the page (all strong elements with class author-name). If somebody starts to type in the name of any of the values captured by $('strong.author-name') and then hits tab, the name will be auto-completed.
 
 <pre><code>	$('#comment-box').jac({items: 'strong.author-name'});</code></pre>
 
