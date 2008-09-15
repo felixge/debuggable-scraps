@@ -1,0 +1,21 @@
+h1. jQuery Auto Completer Plugin (Jac)
+
+A Jquery plugin that will allow you to tab-complete a set of strings found in your markup
+
+h2. Usage / Docs
+
+Auto complete a comment textarea with names scraped from the markup of the page (all strong elements with class author-name).
+
+<pre><code>	$('#comment-box').jac({items: 'strong.author-name'});</code></pre>
+
+Auto complete a comment textarea with a pre-defined array of tab values:
+
+<pre><code>	$('#comment-box').jac({items: ['lorem', 'ipsum', 'declorum', 'est']});</code></pre>
+
+h2. Missing Features
+
+Suggest some : )
+
+h2. Known Bugs
+
+None
