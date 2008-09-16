@@ -14,7 +14,8 @@ Auto complete a comment textarea with a pre-defined array of tab values:
 
 h2. Missing Features
 
-Suggest some : )
+ * Support for tabbing through multiple possible matches instead of only making the first one available
+ * Show a visual clue on the available matches - otherwise users might not even notice this plugin being used
 
 h2. Known Bugs
 
