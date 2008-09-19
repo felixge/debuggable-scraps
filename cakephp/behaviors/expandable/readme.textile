@@ -1,0 +1,1 @@
+The documentation for this behavior can be found "here":http://debuggable.com/posts/unlimited-model-fields-expandable-behavior:48428c2e-9a88-47ec-ae8e-77a64834cda3.
