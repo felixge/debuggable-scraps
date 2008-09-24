@@ -29,7 +29,7 @@ class CloudBehavior extends ModelBehavior{
 		if (!is_array($settings)) {
 			$settings = array();
 		}
-		$Model->__findMethods['cloud'] = true;
+		$Model->_findMethods['cloud'] = true;
 		$this->settings[$Model->alias] = array_merge($this->settings[$Model->alias], $settings);
 	}
 
