@@ -18,7 +18,7 @@ $.fn.expandable = function(options) {
 		more: 'more »',
 		less: '« hide',
 		length: 20,
-		greedy: true,
+		greedy: true
 	}, options || {});
 
 	return this.each(function() {
