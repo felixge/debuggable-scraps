@@ -25,7 +25,6 @@ class ContainableBehaviorTest extends CakeTestCase {
 
 	function testAfterFind() {
 		$r = $this->File->find('all');
-		var_export($r);
 		$this->assertTrue(Set::matches('/FileTestModel[1]/.[colors=255]', $r));
 		$this->assertTrue(Set::matches('/FileTestModel[1]/.[page_id=1]', $r));
 		$this->assertTrue(Set::matches('/FileTestModel[2]/.[comment=This is the Thumbnail version]', $r));
