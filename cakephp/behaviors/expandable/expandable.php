@@ -3,21 +3,22 @@
 /**
  * undocumented class
  *
- * @todo Add support for negative field inclusion rules
  * @package default
  * @access public
  */
-class ExpandableBehavior extends ModelBehavior {
+class ExpandableBehavior extends ModelBehavior{
 	var $settings = array();
 
 	function setup(&$Model, $settings = array()) {
-		$default = array('schema' => $Model->schema());
+		$base = array('schema' => $Model->schema());
 		if (isset($settings['with'])) {
-			return $this->settings[$Model->alias] = am($default, $settings);
+			$conventions = array('foreignKey', $Model->hasMany[$settings['with']]['foreignKey']);
+			return $this->settings[$Model->alias] = am($base, $conventions, $settings);
 		}
 		foreach ($Model->hasMany as $assoc => $option) {
 			if (strpos($assoc, 'Field') !== false) {
-				return $this->settings[$Model->alias] = am($default, array('with' => $assoc), $settings);
+				$conventions = array('with' => $assoc, 'foreignKey' => $Model->hasMany[$assoc]['foreignKey']);
+				return $this->settings[$Model->alias] = am($base, $conventions, !empty($settings) ? $settings : array());
 			}
 		}
 	}
@@ -41,16 +42,18 @@ class ExpandableBehavior extends ModelBehavior {
 		$id = $Model->id;
 		foreach ($fields as $key => $val) {
 			$field = $Model->{$with}->find('first', array(
-				// refactor file_id
 				'fields' => array($with.'.id'),
-				'conditions' => array($with.'.file_id' => $id, $with.'.key' => $key),
+				'conditions' => array($with.'.'.$foreignKey => $id, $with.'.key' => $key),
 				'recursive' => -1,
 			));
+			$Model->{$with}->create(false);
 			if ($field) {
-				$Model->{$with}->create();
-				$Model->{$with}->id = $field[$with]['id'];
-				$Model->{$with}->save(array('val' => $val));
+				$Model->{$with}->set('id', $field[$with]['id']);
+			} else {
+				$Model->{$with}->set(array($foreignKey => $id, 'key' => $key));
 			}
+			$Model->{$with}->set('val', $val);
+			$Model->{$with}->save();
 		}
 	}
 }
