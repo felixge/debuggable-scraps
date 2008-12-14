@@ -10,11 +10,15 @@
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
+ * Example:
+ * $bogusHtml = $htmlCleaner->clean($bogusHtml);
+ *
+ *
  * @copyright		Copyright (c) 2008, Debuggable Ltd. <http://debuggable.com>
  * @link			http://www.debuggable.com
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-class HtmlBalancerHelper extends Helper {
+class HtmlCleanerHelper extends Helper {
 /**
  * An array of html tags that are singled ended: <img />
  *
@@ -54,7 +58,7 @@ class HtmlBalancerHelper extends Helper {
  * @param string $txt 
  * @return void
  */
-	function process($txt) {
+	function clean($txt) {
 		$this->reset();
 		$result = '';
 

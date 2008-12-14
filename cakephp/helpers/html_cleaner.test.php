@@ -1,8 +1,8 @@
 <?php
-App::Import('Helper', 'HtmlBalancer');
+App::Import('Helper', 'HtmlCleaner');
 class HtmlCleanerTestCase extends UnitTestCase {
 	function setUp() {
-		$this->testObject = new HtmlBalancerHelper;
+		$this->testObject = new HtmlCleanerHelper;
 	}
 	
 	function testUnembeddableTags() {
