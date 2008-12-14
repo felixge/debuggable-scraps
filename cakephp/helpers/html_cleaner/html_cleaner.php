@@ -13,7 +13,9 @@
  * Example:
  * $bogusHtml = $htmlCleaner->clean($bogusHtml);
  *
+ * It also replaces the single closed tags with their proper xhtml equivalents. Like <br> --> <br />
  *
+ * 
  * @copyright		Copyright (c) 2008, Debuggable Ltd. <http://debuggable.com>
  * @link			http://www.debuggable.com
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
