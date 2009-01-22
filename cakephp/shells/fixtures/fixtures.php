@@ -10,7 +10,9 @@ class FixturesShell extends Shell {
  * @access public
  */
 	function main() {
+		
 		if (!empty($this->args)) {
+			
 			$fixtures = $this->args;
 			foreach ($fixtures as $i => $fixture) {
 				$fixtures[$i] = APP . 'tests/fixtures/' . $fixture . '_fixture.php';
@@ -20,8 +22,17 @@ class FixturesShell extends Shell {
 			$Folder = new Folder(APP.'tests/fixtures');
 			$fixtures = $Folder->findRecursive('.+_fixture\.php');
 		}
-
-		$db = ConnectionManager::getDataSource('default');
+		$datasource = 'default';
+		if (isset($this->params['datasource'])){
+			$datasource = $this->params['datasource'];
+		}
+		
+		$list = ConnectionManager::enumConnectionObjects();
+		if (!isset($list[$datasource])){
+			$this->error("Data Source","Non-existent data source '{$datasource}'");
+		}
+		$db = ConnectionManager::getDataSource($datasource);
+		
 		$records = 0;
 		foreach ($fixtures as $path) {
 			require_once($path);
