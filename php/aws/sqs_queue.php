@@ -25,7 +25,7 @@ class SqsQueue implements Countable {
 
 	public $name = null;
 
-	public static $serviceUrl = 'http://queue.amazonaws.com/';
+	public static $serviceUrl = 'https://queue.amazonaws.com/';
 	public static $userAgent = 'Debuggable.com SQS PHP5 Library';
 	public static $serializer = array('json_encode', 'json_decode');
 	public static $retries = 3;
