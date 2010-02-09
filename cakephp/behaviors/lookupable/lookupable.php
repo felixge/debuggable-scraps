@@ -16,32 +16,35 @@
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 class LookupableBehavior extends ModelBehavior {
-	function lookup(&$model, $conditions, $field = 'id', $create = true) {
-		if (!is_array($conditions)) {
-			$conditions = array ($model->displayField => $conditions);
-		}
+	function lookup(&$model, $title, $field = 'id', $create = true) {
+		$ret = null;
+		if (($ret = Cache::read("{$model->alias}.lookup.{$title}")) === false) {
+			$conditions = array($model->displayField => $title);
 
-		if (!empty($field)) {
-			$fieldValue = $model->field($field, $conditions);
-		} else {
-			$fieldValue = $model->find($conditions);
+			if (!empty($field)) {
+				$fieldValue = $model->field($field, $conditions);
+			} else {
+				$fieldValue = $model->find($conditions);
+			}
+			if ($fieldValue !== false) {
+				Cache::write("{$model->alias}.lookup.{$title}", $fieldValue);
+				return $fieldValue;
+			}
+			if (!$create) {
+				return false;
+			}
+			$model->create($conditions);
+			if (!$model->save()) {
+				return false;
+			}
+			$conditions[$model->primaryKey] = $model->id;
+			if (empty($field)) {
+				return $model->read();
+			}
+			$ret = $model->field($field, $conditions);
+			Cache::write("{$model->alias}.lookup.{$title}", $ret);
 		}
-		if ($fieldValue !== false) {
-			return $fieldValue;
-		}
-		if (!$create) {
-			return false;
-		}
-		$model->create($conditions);
-		if (!$model->save()) {
-			return false;
-		}
-		$conditions[$model->primaryKey] = $model->id;
-		if (empty($field)) {
-			return $model->read();
-		}
-		return $model->field($field, $conditions);
+		return $ret;
 	}
 }
-
 ?>
