@@ -75,7 +75,13 @@ class FixturizeShell extends Shell{
 					$record[$name]['id'] = String::uuid();
 				}
 				foreach ($record[$name] as $field => $val) {
-					$out[] = sprintf('			\'%s\' => \'%s\',', addcslashes($field, "'"), addcslashes($val, "'"));
+					if (is_null($val)) {
+						$out[] = sprintf('			\'%s\' => null,', addcslashes($field, "'"));
+					} else if (is_numeric($val)) {
+						$out[] = sprintf('			\'%s\' => %s,', addcslashes($field, "'"), $val);
+					} else {
+						$out[] = sprintf('			\'%s\' => \'%s\',', addcslashes($field, "'"), addcslashes($val, "'"));
+					}
 				}
 				$out[] = '		),';
 			}
