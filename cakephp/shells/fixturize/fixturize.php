@@ -62,6 +62,8 @@ class FixturizeShell extends Shell{
 			$out[] = '';
 			$out[] = sprintf('class %sFixture extends CakeTestFixture {', $name);
 			$out[] = sprintf('	var $name = \'%s\';', $name);
+			$out[] = sprintf('	var $fields = array(');
+			$out[] = sprintf('	);');
 			$out[] = '	var $records = array(';
 			foreach ($records as $record) {
 				$out[] = '		array(';
