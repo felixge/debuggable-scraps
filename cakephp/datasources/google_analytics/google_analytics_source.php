@@ -104,10 +104,10 @@ class GoogleAnalyticsSource extends DataSource{
 		}
 
 		$sources = array();
-		$response = $this->Http->get('https://www.google.com/analytics/home/?et=reset&hl=en-US&ns=100');
+		$response = $this->Http->get('https://www.google.com/analytics/settings/?et=reset&hl=en-US&ns=100');
 
 		$optionsRegex = '/<option.+?value="([0-9]+)".*?>([^<]+)<\/option>/si';
-		preg_match('/<select.+?name="account_list".*?>(.+?)<\/select>/is', $response, $accounts);
+		preg_match('/<select.+?name="scid".*?>(.+?)<\/select>/is', $response, $accounts);
 		if (empty($accounts)) {
 			return false;
 		}
@@ -123,9 +123,9 @@ class GoogleAnalyticsSource extends DataSource{
 			}
 			$account = array('Account' => compact('id', 'name'));
 			if ($i != 0) {
-				$response = $this->Http->get('https://www.google.com/analytics/home/admin?scid='.$id.'&ns=100');
+				$response = $this->Http->get('https://www.google.com/analytics/settings/home?scid='.$id.'&ns=100');
 			}
-			preg_match('/<select.+?name="profile_list".*?>(.+?)<\/select>/is', $response, $profiles);
+			preg_match('/<select.+?name="id".*?>(.+?)<\/select>/is', $response, $profiles);
 			if (empty($profiles)) {
 				$account['Profile'] = array();
 				continue;

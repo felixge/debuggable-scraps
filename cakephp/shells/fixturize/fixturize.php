@@ -24,6 +24,7 @@ class FixturizeShell extends Shell{
 			'force' => false,
 			'reindex' => false,
 			'all' => false,
+			'no-schema' => false,
 		);
 		foreach ($this->params as $key => $val) {
 			foreach ($options as $name => $option) {
@@ -62,6 +63,29 @@ class FixturizeShell extends Shell{
 			$out[] = '';
 			$out[] = sprintf('class %sFixture extends CakeTestFixture {', $name);
 			$out[] = sprintf('	var $name = \'%s\';', $name);
+			$out[] = "";
+
+			if (!$options['no-schema']) {
+				$schema = $Model->schema();
+				$out[] = '	var $fields = array(';
+				$temp = array();
+				$schema_len = count($schema);
+				$i = 1;
+				foreach ($schema as $field => $scheme) {
+					$temp[] = sprintf("		'%s' => array('type' => '%s'", $field, $scheme['type']);
+					$temp[] = (isset($scheme['length'])) ? sprintf(", 'length' => %s", $scheme['length']) : "";
+					$temp[] = (isset($scheme['default'])) ? sprintf(", 'default' => '%s'", $scheme['default']) : "";
+					if (isset($scheme['null'])) {
+						$temp[] = sprintf(", 'null' => %s", ($scheme['null'] == true) ? 'true' : 'false');
+					}
+					$temp[] = (isset($scheme['key'])) ? sprintf (", 'key' => '%s'", $scheme['key']) : "";
+					$temp[] = ($i == $schema_len) ? ")" : "),\n";
+					$i++;
+				}
+				$out[] = join("", $temp);
+				$out[] = "	);\n";
+			}
+			
 			$out[] = '	var $records = array(';
 			foreach ($records as $record) {
 				$out[] = '		array(';
